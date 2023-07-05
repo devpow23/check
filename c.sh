@@ -96,10 +96,13 @@ start(){
     	return
     fi
 
-    print_center -ama 'Instalandon flask'
+    print_center -ama 'Instalando flask'
+    apt-get remove python3 -y &>/dev/null
+    apt-get install python3 -y &>/dev/null
+    apt-get install python3-pip -y &>/dev/null
     if pip3 install flask &>/dev/null; then
     	del 1
-    	print_center -verd 'Instalandon flask ok'
+    	print_center -verd 'Instalacion flask ok'
     else
     	del 1
     	print_center -verm2 '\nfalla al instalar flask\nintente instalar manualmente\n\ncomando manual >> pip3 install flask\n\nresuelva esta falla para luego intentar'
