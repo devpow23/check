@@ -1,5 +1,5 @@
 #!/bin/bash
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/ChumoGH/ChumoGH-Script/master/msg-bar/msg)
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/devpow23/check/main/msg)
 source /etc/adm-lite/cabecalho 
 #FUNCION DE SELECCION
 selection_fun () {
@@ -27,7 +27,7 @@ mportas(){
 }
 
 start(){
-[[ -e /bin/ejecutar/checkuser.py ]] || wget -q -O /bin/ejecutar/checkuser.py https://www.dropbox.com/s/636hdjb1tw43uws/chekuser.py && chmod +x /bin/ejecutar/checkuser.py
+[[ -e /bin/ejecutar/checkuser.py ]] || wget -q -O /bin/ejecutar/checkuser.py https://raw.githubusercontent.com/devpow23/check/main/chekuser.py && chmod +x /bin/ejecutar/checkuser.py
 	if [[ $(systemctl is-active chekuser) = "active" ]]; then
 		title 'DESABILITANDO CHEKUSER'
 		systemctl stop chekuser &>/dev/null
@@ -38,7 +38,7 @@ start(){
 		return
 	fi
 
-	title 'SELECCIONA UN PERTO'
+	title 'SELECCIONA UN PUERTO'
     while [[ -z "${chekuser}" ]]; do
     	dport=$(shuf -i 82-150 -n 1)
     	chekuser=$(in_opcion -nama "Ingresa un puerto [def = ${dport}]")
@@ -107,12 +107,12 @@ start(){
     	return
     fi
 
-    print_center -ama 'Instalandon check'
-    if wget -O /usr/bin/check https://www.dropbox.com/s/r2madnleejjqhw1/check.sh &>/dev/null; then
+    print_center -ama 'Instalando check'
+    if wget -O /usr/bin/check https://raw.githubusercontent.com/devpow23/check/main/check.sh &>/dev/null; then
     	chmod +x /usr/bin/check
     	mkdir /etc/rec
     	del 1
-    	print_center -verd 'Instalandon check ok'
+    	print_center -verd 'Instalacion check ok'
     else
     	del 1
     	print_center -verm2 '\nfalla al instalar check\nintente instalar manualmente\n\nresuelva esta falla para luego intentar'
@@ -167,7 +167,7 @@ _onli() {
 
 
    print_center -ama 'Instalando check'
-    if wget -O /usr/bin/onlineapp https://www.dropbox.com/s/x8wcrnj5gho4d39/onlineapp.sh &>/dev/null; then
+    if wget -O /usr/bin/onlineapp https://raw.githubusercontent.com/devpow23/check/main/onlineapp.sh &>/dev/null; then
     	chmod +x /usr/bin/onlineapp
     	mkdir /etc/rec
     	del 1
