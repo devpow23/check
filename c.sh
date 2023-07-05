@@ -1,4 +1,5 @@
 #!/bin/bash
+ip=`cat /etc/VpsPackdir/ip`;
 [[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/devpow23/check/main/msg)
 #source /etc/adm-lite/cabecalho 
 #FUNCION DE SELECCION
@@ -156,7 +157,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/chekuser.service
 
 	if [[ $(systemctl is-active chekuser) = "active" ]]; then
 		title -verd 'Instalacion completa'
-		print_center -ama "URL: http://$chk_ip:$chekuser/checkUser"
+		print_center -ama "URL: http://$ip:$chekuser/checkUser"
 	else
 		systemctl stop chekuser &>/dev/null
     	systemctl disable chekuser &>/dev/null
@@ -212,7 +213,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/onliuser.service
 
 	if [[ $(systemctl is-active onliuser) = "active" ]]; then
 		title -verd 'Instalacion completa'
-		print_center -ama "URL: http://$chk_ip:85/server/online"
+		print_center -ama "URL: http://$ip:85/server/online"
 	else
 		systemctl stop onliuser &>/dev/null
     	systemctl disable onliuser &>/dev/null
@@ -262,7 +263,7 @@ mod_port(){
 
     if [[ $(systemctl is-active chekuser) = "active" ]]; then
 		title -verd 'puerto modificado'
-		print_center -ama "URL: http://$chk_ip:$chekuser/checkUser"
+		print_center -ama "URL: http://$ip:$chekuser/checkUser"
 	else
 		systemctl stop chekuser &>/dev/null
     	systemctl disable chekuser &>/dev/null
@@ -316,7 +317,7 @@ menu_chekuser(){
     	esac
     	fecha_data=$(printf '%15s' "$fecha_data")
 		port_chek=$(ps x|grep -v grep|grep checkuser.py|awk '{print $7}')
-		print_center -ama "URL: http://$chk_ip:$port_chek/checkUser"
+		print_center -ama "URL: http://$ip:$port_chek/checkUser"
 		port_chek=$(printf '%8s' "$port_chek")
 		msg -bar
 		echo " $(msg -verd '[1]') $(msg -verm2 '>') $(msg -verm2 'DESACTIVAR') $(msg -azu 'CHEKUSER')"
