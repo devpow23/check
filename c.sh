@@ -1,6 +1,6 @@
 #!/bin/bash
 [[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/devpow23/check/main/msg)
-source /etc/adm-lite/cabecalho 
+#source /etc/adm-lite/cabecalho 
 #FUNCION DE SELECCION
 selection_fun () {
 local selection="null"
